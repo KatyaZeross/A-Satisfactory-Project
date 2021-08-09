@@ -5,11 +5,8 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import StaleElementReferenceException
 from selenium.webdriver.common.keys import Keys
-# from selenium.webdriver.chrome.options import Optionscon
 import time
-
 import urllib.request
-# import argh
 import csv
 import json
 import os
@@ -30,6 +27,7 @@ content = driver.find_element_by_id('AppHubCards')
 
 html = driver.find_element_by_tag_name('html')
 
+# OUR GAME ID: currently, set to Satisfactory
 game_id = 526870
 
 template = 'https://steamcommunity.com/app/{}/reviews/?browsefilter=mostrecent'
@@ -103,7 +101,9 @@ while running:
         else:
             last_position = curr_position
             break  # continue scraping the results
-
+        
+    #TO DO: condition when "See More Content" button appears
+driver.find_element_by_xpath('.//*[@id="GetMoreContentBtn"]/a').click()
 # shutdown the web driver
 driver.close()
 

@@ -53,7 +53,6 @@ for scroll in range(scrolls):
         
         cards = driver.find_elements_by_class_name('apphub_UserReviewCardContent')
     
-        
         for card in cards:
             
             # top header
@@ -62,20 +61,17 @@ for scroll in range(scrolls):
             #review content box
             review_content = card.find_element_by_class_name('apphub_CardTextContent')
             
-            
             try: 
                 received_free = review_content.find_element_by_class_name('received_compensation').text
             except Exception as e:
                 received_free = '0'
                 pass 
         
-
             finally: 
                 review_date = review_content.find_element_by_class_name('date_posted').text
                 review_text: str = review_content.text
                 hours_played: str = header.find_element_by_class_name('hours').text
                 recommended: str = header.find_element_by_class_name('title').text
-            
             
             print(review_date, review_text, hours_played, '\n')
             
